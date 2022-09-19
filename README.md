@@ -66,17 +66,19 @@
   
   ## [Usage](#table-of-contents)
   
-  You’ll need to use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect your Express.js API to a MySQL database and the [dotenv](https://www.npmjs.com/package/dotenv) package to use environment variables to store sensitive data.
+  Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
 
-  Use the `schema.sql` file in the `db` folder to create your database with MySQL shell commands. Use environment variables to store sensitive data like your MySQL username, password, and database name.
+  You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
+
+  **Note**: The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie. When you are idle on the site for more than a set time, the cookie will expire and you will be required to log in again to start a new session. This is the default behavior and you do not have to do anything to your application other than implement the npm package.
 
   Screenshots:
 
-  ![Database Seeded](./Assets/mysql_seed.png)
+  ![tbd](./Assets/*.png)
 
-  ![Postman](./Assets/postman.png)
+  ![tbd](./Assets/*.png)
 
-  Here's a link to the video: [Video Link](https://drive.google.com/file/d/1XTNi0rRpZ6aCuYC__3OW76ghD4F22BIq/view?usp=sharing)
+  Here's a link to the app deployed in Heroku: [Video Link].)
   
   ## [License](#table-of-contents)
 
