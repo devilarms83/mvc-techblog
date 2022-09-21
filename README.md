@@ -64,6 +64,8 @@
   
   To install the application, download the git repository to your directory of choice and run the application by following the instructions below.
   
+  You can also test the app in heroku: [https://mvc-techblog-app.herokuapp.com/](https://mvc-techblog-app.herokuapp.com/)
+  
   ## [Usage](#table-of-contents)
   
   Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
@@ -74,11 +76,11 @@
 
   Screenshots:
 
-  ![tbd](./Assets/*.png)
+  ![Home Page](./Assets/techblog-home.png)
 
-  ![tbd](./Assets/*.png)
+  ![Login Page](./Assets/techblog-login.png)
 
-  Here's a link to the app deployed in Heroku: [Video Link].)
+  Here's a video of the app in action: [Video Link](https://drive.google.com/file/d/1UP6B7r3EFhdG2nAEJUu-6aokJxMwkWP8/view?usp=sharing).
   
   ## [License](#table-of-contents)
 
