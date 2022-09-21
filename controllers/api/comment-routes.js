@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../../models');
+const { User, Post, Comment } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -8,44 +8,53 @@ router.get('/', async (req, res) => {
     if (commentData.length === 0) {
       res
         .status(404)
-        .json({ message: 'Comments N/A' });
+        .json({ message: 'No comments' });
       return;
     }
 
-    res.status(200).json(commentData);
+    // res.status(200).json(commentData);
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+  
+    res.render('single-post', {comments, loggedIn: req.session.loggedIn});
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/:id', async (req, res) => {
-  try {
-    const commentData = await Comment.findAll({
-      where: { id: req.params.id },
-    });
-    if (commentData.length === 0) {
-      res
-        .status(404)
-        .json({ message: `There is no comment with id = ${req.params.id}` });
-      return;
-    }
 
-    res.status(200).json(commentData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get('/', withAuth, async (req, res) => {
+//  try{ 
+//   const commentData = await Comment.findAll({
+//     include: [
+//       {
+//         model: User,
+//         attributes: ['username'],
+//       },
+//       {
+//         model: Post,
+//         attributes: ['post_id'],
+//       },
+//     ]
+//   });
+//   const comments = commentData.map((comment) => comment.get({ plain: true }));
+  
+//   res.render('single-post', {comments, loggedIn: req.session.loggedIn});
+// } catch(err) {
+//     res.status(500).json(err);
+// }
+// });
 
 router.post('/', withAuth, async (req, res) => {
+  const body = req.body;
+
   try {
     const newComment = await Comment.create({
-      ...req.body, 
+      ...body,
       user_id: req.session.user_id,
     });
-
-    res.status(200).json(newComment);
+    res.json(newComment);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
